@@ -1,9 +1,17 @@
 package entities;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "objective")
 public class Objective {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id ;
     private String description;
+    @Enumerated(EnumType.STRING)
     private State state;
+    @ManyToOne
     private  User user;
 
     public Objective(User user) {
